@@ -40,7 +40,3 @@ public class ClientSide{
         new ClientSide();
     }
 }
-
-// Hi
-
-How do you do 
