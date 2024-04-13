@@ -30,10 +30,16 @@ public class serverSide{
 
   public void closeServerSocket(){
     try{
-      if(serverSocket.isBound()) serverSocket.close();
+      if(serverSocket != null) serverSocket.close();
     }
     catch(Exception e){
       System.out.println("[-] Server socket could not be closed properly");
     }
+  }
+
+  public static void main(String[] args) {
+    ServerSocket serverSocket = new ServerSocket(9999);
+    serverSide server = new serverSide(serverSocket);
+    server.startServer();
   }
 }
