@@ -13,7 +13,7 @@ public class serverSide{
 
   public void startServer(){
     try{
-        while(serverSocket.isClosed()){
+        while(!serverSocket.isClosed()){
           Socket socket = serverSocket.accept();
           System.out.println("[+] A new client has been connected");
           ClientHandler clientHandler = new ClientHandler(socket);
@@ -37,7 +37,7 @@ public class serverSide{
     }
   }
 
-  public static void main(String[] args) {
+  public static void main(String[] args) throws IOException {
     ServerSocket serverSocket = new ServerSocket(9999);
     serverSide server = new serverSide(serverSocket);
     server.startServer();

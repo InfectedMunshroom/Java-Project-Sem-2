@@ -19,7 +19,12 @@ public class clientSideMultiple{
         }
         catch(Exception e){
             System.out.println("Error in creating client");
-            closeEverything(socket,bufferedReader,bufferedWriter);
+            try {
+                closeEverything(socket,bufferedReader,bufferedWriter);
+            } catch (IOException e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+            }
         }
 
     }
@@ -38,12 +43,63 @@ public class clientSideMultiple{
             }
         }
         catch(Exception e){
-            closeEverything(socket, bufferedReader, bufferedWriter);
+            try {
+                closeEverything(socket, bufferedReader, bufferedWriter);
+            } catch (IOException e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+            }
         }
     }
 
     public void listenForMessage(){
+        new Thread(new Runnable() {
+            @Override
+            public void run(){
+                String msgFromGrpChat;
+                while(socket.isConnected()){
+                    try{
+                        msgFromGrpChat = bufferedReader.readLine();
+
+                        System.out.println(msgFromGrpChat);
+                    }
+                    catch(Exception e){
+                        try {
+                            closeEverything(socket,bufferedReader,bufferedWriter);
+                        } catch (IOException e1) {
+                            // TODO Auto-generated catch block
+                            e1.printStackTrace();
+                        }
+                    }
+
+                }
+            }
+        }).start();
+
+
+    }
+
+    public void closeEverything(Socket socket, BufferedReader bufferedReader, BufferedWriter bufferedWriter) throws IOException{
+        if(socket != null){
+            socket.close();
+        }
+        if(bufferedReader != null){
+            bufferedReader.close();
+        }
+        if(bufferedWriter != null){
+            bufferedWriter.close();
+        }
         
+    }
+
+    public static void main(String[] args) throws UnknownHostException, IOException {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter username: ");
+        String username = sc.nextLine();
+        Socket socket = new Socket("localhost",9999);
+        clientSideMultiple client = new clientSideMultiple(socket, username);
+        client.listenForMessage();
+        client.sendMessage();
     }
 
 }
