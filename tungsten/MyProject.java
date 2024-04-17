@@ -387,39 +387,39 @@ public class MyProject implements ActionListener
 	}
 	}
 	
-	public static String monoEncryption(String s)
-    {
-        char c[] = new char[(s.length())];
-        for (int i = 0; i < s.length(); i++)
-        {
-            for (int j = 0; j < 26; j++)
-            {
-                if (p[j] == s.charAt(i))
-                {
-                    c[i] = ch[j];
-                    break;
-                }
-            }
-        }
-        return (new String(c));
-    }
+	// public static String monoEncryption(String s)
+    // {
+    //     char c[] = new char[(s.length())];
+    //     for (int i = 0; i < s.length(); i++)
+    //     {
+    //         for (int j = 0; j < 26; j++)
+    //         {
+    //             if (p[j] == s.charAt(i))
+    //             {
+    //                 c[i] = ch[j];
+    //                 break;
+    //             }
+    //         }
+    //     }
+    //     return (new String(c));
+    // }
  
-    public static String monoDecryption(String s)
-    {
-        char p1[] = new char[(s.length())];
-        for (int i = 0; i < s.length(); i++)
-        {
-            for (int j = 0; j < 26; j++)
-            {
-                if (ch[j] == s.charAt(i))
-                {
-                    p1[i] = p[j];
-                    break;
-                }
-            }
-        }
-        return (new String(p1));
-    }
+    // public static String monoDecryption(String s)
+    // {
+    //     char p1[] = new char[(s.length())];
+    //     for (int i = 0; i < s.length(); i++)
+    //     {
+    //         for (int j = 0; j < 26; j++)
+    //         {
+    //             if (ch[j] == s.charAt(i))
+    //             {
+    //                 p1[i] = p[j];
+    //                 break;
+    //             }
+    //         }
+    //     }
+    //     return (new String(p1));
+    // }
 	
 	private void decryptLastMessage()
 	{
@@ -470,6 +470,7 @@ public class MyProject implements ActionListener
         recent_msg.setText(msg3);
         f.add(recent_msg);
 	}
+    
 	private void viewMessage()
 	{
         f.getContentPane().removeAll();

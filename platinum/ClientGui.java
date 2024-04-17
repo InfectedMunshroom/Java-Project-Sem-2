@@ -83,6 +83,11 @@ public class ClientGui extends Thread{
     jsbtndeco.setFont(font);
     jsbtndeco.setBounds(25, 410, 130, 35);
 
+    // button Steganography
+    final JButton jsbtnstego = new JButton("Steganography");
+    jsbtnstego.setFont(font);
+    jsbtnstego.setBounds(200,410,130,35);
+
     jtextInputChat.addKeyListener(new KeyAdapter() {
       // send message on Enter
       public void keyPressed(KeyEvent e) {
@@ -112,29 +117,34 @@ public class ClientGui extends Thread{
       }
     });
 
+    jsbtnstego.addActionListener(new ActionListener() {
+      public void actionPerformed(ActionEvent ae) {
+        new Steganography();
+      }
+    });
+
+
+
     // Connection view
     final JTextField jtfName = new JTextField(this.name);
     final JTextField jtfport = new JTextField(Integer.toString(this.PORT));
     final JTextField jtfAddr = new JTextField(this.serverName);
     final JButton jcbtn = new JButton("Connect");
 
-    // check if those field are not empty
     jtfName.getDocument().addDocumentListener(new TextListener(jtfName, jtfport, jtfAddr, jcbtn));
     jtfport.getDocument().addDocumentListener(new TextListener(jtfName, jtfport, jtfAddr, jcbtn));
     jtfAddr.getDocument().addDocumentListener(new TextListener(jtfName, jtfport, jtfAddr, jcbtn));
 
-    // position des Modules
     jcbtn.setFont(font);
     jtfAddr.setBounds(25, 380, 135, 40);
     jtfName.setBounds(375, 380, 135, 40);
     jtfport.setBounds(200, 380, 135, 40);
     jcbtn.setBounds(575, 380, 100, 40);
 
-    // couleur par defaut des Modules fil de discussion et liste des utilisateurs
     jtextFilDiscu.setBackground(Color.LIGHT_GRAY);
     jtextListUsers.setBackground(Color.LIGHT_GRAY);
 
-    // ajout des éléments
+   
     jfr.add(jcbtn);
     jfr.add(jtextFilDiscuSP);
     jfr.add(jsplistuser);
@@ -145,13 +155,6 @@ public class ClientGui extends Thread{
 
 
     
-    // appendToPane(jtextFilDiscu, "<h4>Les commandes possibles dans le chat sont:</h4>"
-    //     +"<ul>"
-    //     +"<li><b>@nickname</b> pour envoyer un Message privé à l'utilisateur 'nickname'</li>"
-    //     +"<li><b>#d3961b</b> pour changer la couleur de son pseudo au code hexadécimal indiquer</li>"
-    //     +"<li><b>;)</b> quelques smileys sont implémentés</li>"
-    //     +"<li><b>flèche du haut</b> pour reprendre le dernier message tapé</li>"
-    //     +"</ul><br/>");
 
     // On connect
     jcbtn.addActionListener(new ActionListener() {
@@ -184,6 +187,7 @@ public class ClientGui extends Thread{
           jfr.add(jsbtn);
           jfr.add(jtextInputChatSP);
           jfr.add(jsbtndeco);
+          jfr.add(jsbtnstego);
           jfr.revalidate();
           jfr.repaint();
           jtextFilDiscu.setBackground(Color.WHITE);
