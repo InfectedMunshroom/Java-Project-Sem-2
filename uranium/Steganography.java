@@ -1,5 +1,5 @@
 
-
+package uranium;
 import javax.swing.*;    
 import java.awt.event.*;
 import java.io.*;
@@ -98,7 +98,7 @@ public class Steganography implements ActionListener
         
         Image image,newimg;
         
-        img1 =new ImageIcon("/home/tatenashisarashiki/Projects/Hermes II Beta/aurum/steganography/MyProject/src/autumn.jpg");
+        img1 =new ImageIcon("uranium/autumn.jpg");
         image = img1.getImage();
         newimg = image.getScaledInstance(100, 100,  java.awt.Image.SCALE_SMOOTH); 
         img1=new ImageIcon(newimg);
@@ -106,7 +106,7 @@ public class Steganography implements ActionListener
         pl1.setBounds(20,170,100,100);
         f.add(pl1);
         
-        img2 =new ImageIcon("/home/tatenashisarashiki/Projects/Hermes II Beta/aurum/steganography/MyProject/src/summer.jpg");
+        img2 =new ImageIcon("uranium/summer.jpg");
         image = img2.getImage();
         newimg = image.getScaledInstance(100, 100,  java.awt.Image.SCALE_SMOOTH); 
         img2=new ImageIcon(newimg);
@@ -114,7 +114,7 @@ public class Steganography implements ActionListener
         pl2.setBounds(20,270,100,100);
         f.add(pl2);
         
-        img3 =new ImageIcon("/home/tatenashisarashiki/Projects/Hermes II Beta/aurum/steganography/MyProject/src/winter.jpg");
+        img3 =new ImageIcon("uranium/winter.jpg");
         image = img3.getImage();
         newimg = image.getScaledInstance(100, 100,  java.awt.Image.SCALE_SMOOTH); 
         img3=new ImageIcon(newimg);
@@ -122,7 +122,7 @@ public class Steganography implements ActionListener
         pl3.setBounds(20,370,100,100);
         f.add(pl3);
         
-        img4 =new ImageIcon("/home/tatenashisarashiki/Projects/Hermes II Beta/aurum/steganography/MyProject/src/spring.jpg");
+        img4 =new ImageIcon("uranium/spring.jpg");
         image = img4.getImage();
         newimg = image.getScaledInstance(100, 100,  java.awt.Image.SCALE_SMOOTH); 
         img4=new ImageIcon(newimg);
@@ -172,7 +172,7 @@ public class Steganography implements ActionListener
         public void actionPerformed(ActionEvent e) 
         {   
         	String to=new String(t1.getText());
-        	String img=new String("/home/tatenashisarashiki/Projects/Hermes II Beta/aurum/steganography/MyProject/src/");
+        	String img=new String("uranium/");
         	 if(rb1.isSelected())
         	 {
         		 img+="autumn";
@@ -249,7 +249,7 @@ public class Steganography implements ActionListener
 
 
 	public static void hideTheMessage (int[] bits, BufferedImage theImage) throws Exception{
-		File f = new File ("steg.png");
+		File f = new File ("uranium/steg.png");
 		BufferedImage sten_img=null;
 		int bit_l=bits.length/8;
 		int[] bl_msg=new int[8];
@@ -322,7 +322,7 @@ public class Steganography implements ActionListener
 		f.getContentPane().removeAll();
         f.getContentPane().repaint();
         
-        String img_to_decrypt=new String("/home/tatenashisarashiki/Projects/Hermes II Beta/aurum/steganography/MyProject/src/steg.png");
+        String img_to_decrypt=new String("uranium/steg.png");
        
         
     	BufferedImage yImage=readImageFile(img_to_decrypt);
@@ -372,7 +372,7 @@ public class Steganography implements ActionListener
         f.getContentPane().removeAll();
         f.getContentPane().repaint();
         Image image,newimg;
-        img5 =new ImageIcon("E:\\java\\MyProject\\steg.png");
+        img5 =new ImageIcon("uranium/steg.png");
         image = img5.getImage();
         newimg = image.getScaledInstance(200, 200,  java.awt.Image.SCALE_SMOOTH); 
         img5=new ImageIcon(newimg);
